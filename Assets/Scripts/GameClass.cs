@@ -105,7 +105,7 @@ public class GameClass : MonoBehaviour
             
 
         }
-        else if(scoreSlider.value == 10 || atualLocation)
+        else if(scoreSlider.value == 10 || atualLocation == 0)
         {
             //Fim de jogo
             victoryStatus.text = "Você ganhou!";
