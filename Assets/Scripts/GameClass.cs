@@ -7,50 +7,27 @@ using TMPro;
 
 public class GameClass : MonoBehaviour
 {
-    //public Awnsers awnsers;
-
     private int liveAmount;
     public int atualLocation;
-
     private GameObject audioData1;
     private GameObject audioData2;
 
-
     [SerializeField] private int  resposta;
-
-
     [SerializeField] private TextMeshProUGUI  res1;
     [SerializeField] private TextMeshProUGUI  res2;
     [SerializeField] private TextMeshProUGUI  res3;
     [SerializeField] private TextMeshProUGUI  res4;
-
     [SerializeField] private TextMeshProUGUI  ask;
 
     public TextAsset jsonFile;
-
-
     public AllAwnsers allMyAwnsers = new AllAwnsers();
-
     public Slider scoreSlider;
-
     private Transform awnsersArea;
-
-
 
     [SerializeField] private TextMeshProUGUI  pontuac;
     [SerializeField] private TextMeshProUGUI  victoryStatus;
     private GameObject endGameMenu;
-
-
-
-
-
-
-
-
  
-
-
     void Start()
     {
 
@@ -62,8 +39,6 @@ public class GameClass : MonoBehaviour
         ask = GameObject.Find("Ask").GetComponent<TextMeshProUGUI >();
 
         awnsersArea = GameObject.Find("AreaDasRespostas").transform;
-
-        //Debug.Log(jsonFile.text);
         allMyAwnsers = JsonUtility.FromJson<AllAwnsers>(jsonFile.text);
 
 
@@ -76,37 +51,22 @@ public class GameClass : MonoBehaviour
         pontuac = GameObject.Find("PontuacFInal").GetComponent<TextMeshProUGUI >();
         victoryStatus = GameObject.Find("VictoryStatus").GetComponent<TextMeshProUGUI >();
         endGameMenu.SetActive(false);
-
-        
-
-
-
     }
-
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-
 
 
     public void ResetCenary()
     {
-        //Vai ser responsavel por aleatorizar as perguntas
         Debug.Log(allMyAwnsers.awnsers.Count);
 
 
         atualLocation = Random.Range(0, allMyAwnsers.awnsers.Count - 1);
-
         res1.text = allMyAwnsers.awnsers[atualLocation].resposta1;
         res2.text = allMyAwnsers.awnsers[atualLocation].resposta2;
         res3.text = allMyAwnsers.awnsers[atualLocation].resposta3;
         res4.text = allMyAwnsers.awnsers[atualLocation].resposta4;
         ask.text = allMyAwnsers.awnsers[atualLocation].pergunta;
-
         resposta = allMyAwnsers.awnsers[atualLocation].resposta;
         changeButtonStatus();
-
-
     }
 
     public void Responda(string respostaDada)
@@ -128,10 +88,7 @@ public class GameClass : MonoBehaviour
 
         }
         verifyLoss();
-        //RemoveAt(allMyAwnsers.awnsers, atualLocation);
-
         allMyAwnsers.awnsers.RemoveAt(0);
-        /* allMyAwnsers.awnsers = arrLocal; */
 
         changeButtonStatus();
 
@@ -170,3 +127,12 @@ public class GameClass : MonoBehaviour
     }
 }
 
+
+
+//
+//     Code made by: Guilherme Lossio
+//  Please if use this code, or some part of it, give me the credits.
+//  My game portifolio is at: https://sacminerva.itch.io/
+//  If want to contract me for some job call me at: Guilhermelossio@gmail.com
+//
+//
